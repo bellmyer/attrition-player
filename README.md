@@ -97,5 +97,5 @@ every time, and "Play it Safe" wagers just one soldier per battle. Fire up your 
 and THEN start the server. This is necessary because the server will seek out all players on the 
 network. Then visit "http://localhost:3100" to play the game:
 
-![Attrition](https://github.com/rubycuts/attrition-player/raw/master/src/public/attrition.png)
+![Attrition](https://github.com/rubycuts/attrition-player/blob/master/public/attrition.png?raw=true)
 
