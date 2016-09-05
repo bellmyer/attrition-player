@@ -18,8 +18,8 @@ has just a few simple principles:
 
 ### 1. Armies Decide How Many Soldiers to "Wager" in Battle
 
-Each Army Begins the game with 100 Soldiers. For each battle, the general must decide how many
-soldiers to send - at least one. The general only knows the total size of each of the other armies, but
+Each army begins the game with 100 soldiers. For each battle, the Player object must decide how many
+soldiers to send - at least one. The Player object only knows the total size of each of the other armies, but
 not how many soldiers the other armies plan to send into battle.
 
 ### 2. Losses are Equal on All Sides
@@ -117,5 +117,12 @@ available).
 The client/server architecture prevents players from "hacking" the server classes or
 other player classes. It also allows each programmer to code their own solution, and 
 participate in the game without having to submit their code to a central location.
+
+In fact, player apps can be built in any language, using any server configuration, as long 
+as they conform to the same API protocols:
+
+* bind to port 6001
+* accept the request "GET /ping", and return JSON like `{status: 'success', name: 'Some Name'}`
+* accept requests like "GET /move?armies=100,20,10&soldiers=50" and return JSON like `{status: 'success', soldiers: 10}`
 
 This basic platform can be used for countless programmable games and variations.
