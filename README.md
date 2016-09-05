@@ -111,7 +111,7 @@ route. If successful, the IP address and provided player name will be saved.
 
 Once the game begins, the server will make a "/move" request to each player, supplying the
 parameters listed above. The player will respond with its next "wager". The server ensures
-that the response falls within the allow range (no fewer than 1, no more than the player has
+that the response falls within the allowed range (no fewer than 1, no more than the player has
 available).
 
 The client/server architecture prevents players from "hacking" the server classes or
