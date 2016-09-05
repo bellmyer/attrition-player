@@ -19,7 +19,7 @@ only has just a few simple principles:
 ### 1. Armies Decide How Many Soldiers to "Wager" in Battle
 
 Each Army Begins the game with 100 Soldiers. For each battle, the general must decide how many
-soldiers to send. The general only knows the total size of each of the other armies, but
+soldiers to send - at least one. The general only knows the total size of each of the other armies, but
 not how many soldiers the other armies plan to send into battle.
 
 ### 2. Losses are Equal on All Sides
@@ -46,6 +46,12 @@ Added to the 90 soldiers that didn't fight, the winning army now has 103 soldier
 two armies are down the number of soldiers they sent to battle, so they have 95 and 98 soldiers,
 respectively.
 
+### 4. Be the Last Army Standing
+
+The game is played round after round, until only a single army is still standing. The
+scoreboard ranks players based on how many overall battles they survived before running
+out of soldiers.
+
 ## Strategy
 
 As you can see, if you're going to win, you need to win big even to just maintain the same 
@@ -53,6 +59,19 @@ army size. If you KNEW you were going to lose, you'd want to lose as few soldier
 Herein lies the strategy - the worst thing you can do is win small or lose big.
 
 ## The Player Class
+
+Here is the Player class you must modify in order to implement YOUR strategy:
+
+    # lib/player.rb
+    class Player
+      def name
+        'Default Player'
+      end
+  
+      def move armies, soldiers
+        soldiers / 2
+      end
+    end
 
 The player class is simple, and only has two public methods: `name` and `move`. The `name` method 
 just reports the name of this player back to the server so you can recognize your player on
@@ -76,4 +95,7 @@ For testing purposes, you may wish to download and run the
 in a separate terminal window. It comes with two computer players; "Bet It All" wagers everything
 every time, and "Play it Safe" wagers just one soldier per battle. Fire up your own player first,
 and THEN start the server. This is necessary because the server will seek out all players on the 
-network. Then visit "http://localhost:3100" to play the game.
+network. Then visit "http://localhost:3100" to play the game:
+
+![Attrition](https://github.com/rubycuts/attrition-player/raw/master/src/public/attrition.png)
+
