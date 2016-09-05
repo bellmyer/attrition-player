@@ -1,20 +1,26 @@
 # Attrition
 
-Attrition is a simple client/server based game to demonstrate out systems 
-on a network can collaborate with each other via API calls. If the server is
-running on the local network, then all you need to do is fire up the client like so:
+Attrition is a simple client/server based game to demonstrate how systems 
+on a network can collaborate with each other via API calls. If an
+[Attrition Player](https://github.com/rubycuts/attrition-player)
+is running on the local network, then all you need to do is fire up the game server like so:
 
     ruby app.rb
     
-Of course, if you want the game to be interesting, you'll modify the Player class first,
-which can be found in `lib/player.rb`. In order to do that, you'll need to understand the
-rules of the game.
+The game server will seek out any players on the same local network. This takes a few seconds.
+Once it's done loading, open a browser to *http://localhost:3100* and click "play" to begin! If
+you don't see a player that should be there, just click "reset" and the server will look again
+for any late-comers.
+
+Each time you click play, a single round of battle is run. You can do this until there is only
+one army remaining. Attrition Server comes with two computer players - one that "bets it all"
+every time, and one that sends just a single soldier to each battle.
 
 ## The Rules of Attrition
 
 A war of attrition is a war where two or more armies are just wearing down each other's
 resources until all but one side is exhausted. This strategy game illustrates that. It
-only has just a few simple principles:
+has just a few simple principles:
 
 ### 1. Armies Decide How Many Soldiers to "Wager" in Battle
 
@@ -51,51 +57,6 @@ respectively.
 The game is played round after round, until only a single army is still standing. The
 scoreboard ranks players based on how many overall battles they survived before running
 out of soldiers.
-
-## Strategy
-
-As you can see, if you're going to win, you need to win big even to just maintain the same 
-army size. If you KNEW you were going to lose, you'd want to lose as few soldiers as possible.
-Herein lies the strategy - the worst thing you can do is win small or lose big.
-
-## The Player Class
-
-Here is the Player class you must modify in order to implement YOUR strategy:
-
-    # lib/player.rb
-    class Player
-      def name
-        'Default Player'
-      end
-  
-      def move armies, soldiers
-        soldiers / 2
-      end
-    end
-
-The player class is simple, and only has two public methods: `name` and `move`. The `name` method 
-just reports the name of this player back to the server so you can recognize your player on
-the scoreboard.
-
-The `move` method accepts two parameters: an array of army sizes, and the number of soldiers YOUR
-army currently contains after the latest battle. Based on this information, you must return 
-the number of soldiers you wish to wager in the next battle. 
-
-The array of army sizes will always be in the same order, so you can track each army's progress
-over time. All army sizes will be given, even for armies who have run out of soldiers, and are
-therefore eliminated from the game.
-
-The default player ignores the sizes of other armies, and just wagers half its soldiers every time.
-**HINT:** This is probably the worst possible strategy, so you can only improve from here!
-
-## Testing
-
-For testing purposes, you may wish to download and run the
-[Attrition Server](https://github.com/rubycuts/attrition-server)
-in a separate terminal window. It comes with two computer players; "Bet It All" wagers everything
-every time, and "Play it Safe" wagers just one soldier per battle. Fire up your own player first,
-and THEN start the server. This is necessary because the server will seek out all players on the 
-network. Then visit "http://localhost:3100" to play the game:
 
 ![Attrition](https://github.com/rubycuts/attrition-player/blob/master/public/attrition.png?raw=true)
 
