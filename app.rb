@@ -19,5 +19,6 @@ get '/ping' do
 end
 
 post '/move' do
-  {status: 'success', soldiers: settings.player.move(params[:armies].to_i, params[:soldiers].to_i)}.to_json
+  soldiers = settings.player.move(params[:armies].split(',').map(&:to_i), params[:soldiers].to_i)
+  {status: 'success', soldiers: soldiers}.to_json
 end
