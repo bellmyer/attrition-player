@@ -3,7 +3,8 @@ class Player
     'Default Player'
   end
   
-  def move armies, soldiers
-    soldiers / 2
+  def move options={}
+    # example options hash: {armies: [100, 50, 20], soldiers: 15}
+    options['soldiers'] / 2
   end
 end

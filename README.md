@@ -68,8 +68,9 @@ Here is the Player class you must modify in order to implement YOUR strategy:
         'Default Player'
       end
   
-      def move armies, soldiers
-        soldiers / 2
+      def move options={}
+        # example options hash: {armies: [100, 50, 20], soldiers: 15}
+        options['soldiers'] / 2
       end
     end
 
@@ -77,9 +78,12 @@ The player class is simple, and only has two public methods: `name` and `move`. 
 just reports the name of this player back to the server so you can recognize your player on
 the scoreboard.
 
-The `move` method accepts two parameters: an array of army sizes, and the number of soldiers YOUR
-army currently contains after the latest battle. Based on this information, you must return 
-the number of soldiers you wish to wager in the next battle. 
+The `move` method accepts a hash of options, with just two keys:
+
+* `options['armies']` is an array of army sizes.
+* `options['soldiers']` is the number of soldiers YOUR army currently contains after the latest battle. 
+
+Based on this information, you must return the number of soldiers you wish to wager in the next battle. 
 
 The array of army sizes will always be in the same order, so you can track each army's progress
 over time. All army sizes will be given, even for armies who have run out of soldiers, and are
@@ -123,6 +127,6 @@ as they conform to the same API protocols:
 
 * bind to port 6001
 * accept the request "GET /ping", and return JSON like `{status: 'success', name: 'Some Name'}`
-* accept requests like "GET /move?armies=100,20,10&soldiers=50" and return JSON like `{status: 'success', soldiers: 10}`
+* accept requests like "POST /move" with a JSON payload like `{armies: [100,20,10], soldiers: 50}` and return JSON like `{status: 'success', soldiers: 10}`
 
 This basic platform can be used for countless programmable games and variations.
