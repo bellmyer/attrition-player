@@ -94,14 +94,19 @@ The default player ignores the sizes of other armies, and just wagers half its s
 
 ## Testing
 
-For testing purposes, you may wish to download and run the
-[Attrition Server](https://github.com/rubycuts/attrition-server)
-in a separate terminal window. It comes with two computer players; "Bet It All" wagers everything
-every time, and "Play it Safe" wagers just one soldier per battle. Fire up your own player first,
-and THEN start the server. This is necessary because the server will seek out all players on the 
-network. Then visit "http://localhost:3100" to play the game:
+For testing purposes, you can run:
 
-![Attrition](https://github.com/rubycuts/attrition-server/blob/master/public/attrition.png?raw=true)
+    ruby test.rb
+
+This will load your player, and any players in the `lib/others` directory. It comes with two 
+computer players; "Bet It All" wagers everything every time, and "Play it Safe" wagers just 
+one soldier per battle. This script will output players, scores, and number of rounds survived, 
+sorted from best to worst.
+
+Alternatively, if you'd like to see how the server interacts with the player clients,
+you can to download and run the
+[Attrition Server](https://github.com/rubycuts/attrition-server)
+in a separate terminal window. 
 
 ## Under the Hood
 
